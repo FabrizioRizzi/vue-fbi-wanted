@@ -1,15 +1,18 @@
 <template>
   <Header :title="'FBI Most Wanted'" />
   <div>Home</div>
+  <CriminalCard :name="'Prova'" />
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import Header from "./Header.vue";
+import CriminalCard from "./CriminalCard.vue";
 
 @Options({
   components: {
     Header,
+    CriminalCard
   },
 })
 export default class Home extends Vue {
