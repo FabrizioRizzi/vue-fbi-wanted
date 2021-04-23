@@ -1,28 +1,4 @@
 # fbi-most-wanted
 
-Server relay on runkit
-
-
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+* Fbi Most Wanted App built on Vue3(class-component) and Typescript
+* To call the fbi api I used a server relay on runkit.com (Node+Express) to bypass cors.
