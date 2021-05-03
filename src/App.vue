@@ -1,6 +1,7 @@
 <template>
-  {{data}}
-  <Home />
+  {{ data }}
+  <div id="nav"><router-link to="/">Home</router-link> |</div>
+  <router-view />
 </template>
 
 <script lang="ts">
