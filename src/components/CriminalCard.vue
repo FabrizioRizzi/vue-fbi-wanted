@@ -1,6 +1,6 @@
 <template>
   <div class="CriminalCard">
-    <h2>{{ name }}</h2>
+    <h2 @click="goToItem" class="Name">{{ name }}</h2>
     <h3>{{ classification }}</h3>
     <div v-html="description"></div>
     <img :src="image" />
@@ -15,10 +15,17 @@ import { Options, Vue } from "vue-class-component";
     name: String,
     classification: String,
     description: String,
-    image: String
+    image: String,
   },
 })
-export default class CriminalCard extends Vue {}
+export default class CriminalCard extends Vue {
+  name!: string;
+
+  goToItem() {
+    console.log("click");
+    this.$router.push({ path: `/item/${this.name}` });
+  }
+}
 </script>
 
 <style>
@@ -29,5 +36,9 @@ export default class CriminalCard extends Vue {}
   margin: 20px;
   padding: 20px;
   box-shadow: 0px 1px 5px #00000040;
+}
+
+.Name {
+  cursor: pointer;
 }
 </style>

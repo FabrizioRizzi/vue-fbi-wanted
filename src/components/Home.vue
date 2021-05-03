@@ -1,13 +1,14 @@
 <template>
   <Header :title="'FBI Most Wanted'" />
-  <div class="CriminalCardsContainer" >
+  <div class="CriminalCardsContainer">
     <CriminalCard
       v-for="item in items"
       v-bind:key="item.uid"
       :name="item.title"
       :classification="item.person_classification"
       :description="item.details"
-      :image="item.images[0].thumb" />
+      :image="item.images[0].thumb"
+    />
   </div>
 </template>
 
