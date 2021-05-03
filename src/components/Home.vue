@@ -7,7 +7,7 @@
       :name="item.title"
       :classification="item.person_classification"
       :description="item.details"
-      :image="item.images[0].thumb"
+      :image="item.images?.length && item.images[0].thumb"
     />
   </div>
 </template>
@@ -23,24 +23,16 @@ import CriminalCard from "./CriminalCard.vue";
     Header,
     CriminalCard,
   },
-})
-export default class Home extends Vue {
-  items: [] = [];
-
+  computed: {
+    items() {
+      return this.$store.getters.getItems
+    }
+  },
   mounted() {
-    fetch("https://server-relay-p7dh73rgd6s7.runkit.sh/", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        targetUrl: "https://api.fbi.gov/wanted/v1/list",
-      }),
-    })
-      .then((res) => res.json())
-      .then((parsedRes) => (this.items = parsedRes.items));
+    this.$store.dispatch('setItmes');
   }
-}
+})
+export default class Home extends Vue {}
 </script>
 
 <style>

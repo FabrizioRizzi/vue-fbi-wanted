@@ -4,7 +4,7 @@ import { Store } from 'vuex';
 declare module '@vue/runtime-core' {
   // declare your own store states
   export interface State {
-    item: Item
+    items: Item[]
   }
 
   export interface Item {

@@ -1,5 +1,4 @@
 <template>
-  {{ data }}
   <div id="nav"><router-link to="/">Home</router-link> |</div>
   <router-view />
 </template>
@@ -11,12 +10,7 @@ import Home from "./components/Home.vue";
 @Options({
   components: {
     Home,
-  },
-  data() {
-    return {
-      data: this.$store.state,
-    };
-  },
+  }
 })
 export default class App extends Vue {}
 </script>
