@@ -1,8 +1,8 @@
 <template>
   <div class="ItemCard">
     <h2 @click="goToItem" class="Name">{{ item.title }}</h2>
-    <h3>{{ item.person_classification }}</h3>
-    <div v-html="item.details"></div>
+    <h3>Person Classification: {{ item.person_classification }}</h3>
+    <div v-html="item.description"></div>
     <img :src="item.images?.length && item.images[0].thumb" />
   </div>
 </template>
@@ -26,7 +26,7 @@ export default class ItemCard extends Vue {
 }
 </script>
 
-<style>
+<style scoped>
 .ItemCard {
   display: grid;
   border: 2px solid #333;

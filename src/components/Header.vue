@@ -18,7 +18,7 @@ export default class Header extends Vue {
 }
 </script>
 
-<style>
+<style scoped>
 .Header {
   display: grid;
   grid-template-columns: 165px 1fr;

@@ -1,5 +1,7 @@
 <template>
-  <div id="nav"><router-link to="/">Home</router-link> |</div>
+  <div class="Breadcrumb">
+    <router-link to="/">Home</router-link>
+  </div>
   <router-view />
 </template>
 
@@ -10,7 +12,7 @@ import Home from "./components/Home.vue";
 @Options({
   components: {
     Home,
-  }
+  },
 })
 export default class App extends Vue {}
 </script>
@@ -24,5 +26,9 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.Breadcrumb {
+  margin: 20px;
 }
 </style>
