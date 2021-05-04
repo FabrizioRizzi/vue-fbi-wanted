@@ -2,7 +2,7 @@ import { Item, State } from "@vue/runtime-core";
 import { ActionContext } from "vuex";
 
 const actions = {
-  setItmes(context: ActionContext<State, State>) {
+  setItems(context: ActionContext<State, State>) {
     fetch("https://server-relay-p7dh73rgd6s7.runkit.sh/", {
       method: "POST",
       headers: {

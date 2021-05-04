@@ -1,13 +1,10 @@
 <template>
   <Header :title="'FBI Most Wanted'" />
-  <div class="CriminalCardsContainer">
-    <CriminalCard
+  <div class="ItemCardsContainer">
+    <ItemCard
       v-for="item in items"
       v-bind:key="item.uid"
-      :name="item.title"
-      :classification="item.person_classification"
-      :description="item.details"
-      :image="item.images?.length && item.images[0].thumb"
+      :item="item"
     />
   </div>
 </template>
@@ -15,13 +12,13 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import Header from "./Header.vue";
-import CriminalCard from "./CriminalCard.vue";
+import ItemCard from "./ItemCard.vue";
 
 @Options({
   name: "Home",
   components: {
     Header,
-    CriminalCard,
+    ItemCard,
   },
   computed: {
     items() {
@@ -29,14 +26,14 @@ import CriminalCard from "./CriminalCard.vue";
     }
   },
   mounted() {
-    this.$store.dispatch('setItmes');
+    this.$store.dispatch('setItems');
   }
 })
 export default class Home extends Vue {}
 </script>
 
 <style>
-.CriminalCardsContainer {
+.ItemCardsContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-auto-rows: 1fr;

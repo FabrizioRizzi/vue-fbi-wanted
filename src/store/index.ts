@@ -6,7 +6,8 @@ import actions from './actions';
 
 export const store = createStore<State>({
   state: {
-    items: [{ uid: 'sfaad' }]
+    items: [],
+    item: {}
   },
   getters,
   mutations,
