@@ -1,9 +1,12 @@
 <template>
   <div class="ItemCard">
-    <h2 @click="goToItem" class="Name">{{ item.title }}</h2>
-    <h3>Person Classification: {{ item.person_classification }}</h3>
-    <div v-html="item.description"></div>
+    <div v-if="item.reward_max" class="Reward">$ {{item.reward_max}}</div>
     <img :src="item.images?.length && item.images[0].thumb" />
+    <h2 @click="goToItem" class="Name">{{ item.title }}</h2>
+    <h3 :class="item.person_classification">
+      Person Classification: {{ item.person_classification }}
+    </h3>
+    <div class="Description" v-html="item.description"></div>
   </div>
 </template>
 
@@ -13,14 +16,14 @@ import { Options, Vue } from "vue-class-component";
 
 @Options({
   props: {
-    item: Object as PropType<Item>
+    item: Object as PropType<Item>,
   },
 })
 export default class ItemCard extends Vue {
   item!: Item;
-  
+
   goToItem() {
-    this.$store.commit('setItem', this.item)
+    this.$store.commit("setItem", this.item);
     this.$router.push({ path: `/item` });
   }
 }
@@ -28,15 +31,55 @@ export default class ItemCard extends Vue {
 
 <style scoped>
 .ItemCard {
+  position: relative;
   display: grid;
-  border: 2px solid #333;
+  align-items: center;
+  justify-items: center;
+  border: 2px solid #ddd;
   border-radius: 5px;
   margin: 20px;
-  padding: 20px;
-  box-shadow: 0px 1px 5px #00000040;
+  padding: 10px;
+  box-shadow: 2px 2px 5px #00000020;
+  background: #efefef85;
+  overflow: hidden;
+}
+
+.Reward {
+  width: 170px;
+  background: aqua;
+  position: absolute;
+  top: 30px;
+  transform: rotate(45deg);
+  right: -40px;
+  text-align: center;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .Name {
   cursor: pointer;
+  margin: 10px;
+  text-align: center;
+}
+
+h3 {
+  margin: 0;
+}
+
+h3.Victim {
+  color: #1881a9;
+}
+
+h3.Main {
+  color: #a90a0a;
+}
+
+.Description {
+  color: #888;
 }
 </style>
