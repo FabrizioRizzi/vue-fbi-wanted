@@ -1,7 +1,4 @@
 <template>
-  <div class="Breadcrumb">
-    <router-link to="/">Home</router-link>
-  </div>
   <router-view />
 </template>
 
@@ -18,12 +15,15 @@ export default class App extends Vue {}
 </script>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+
 body {
   margin: 0;
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Quicksand, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

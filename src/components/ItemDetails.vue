@@ -1,7 +1,18 @@
 <template>
   <div class="ItemDetails">
+    <div class="Breadcrumb">
+      <router-link to="/">Home</router-link>
+    </div>
     <h1>{{ item.title }}</h1>
     <div v-html="item.details"></div>
+    <div class="ImageGrid">
+      <img
+        v-for="image in item.images"
+        v-bind:key="image.caption"
+        :src="image.thumb"
+        class="Image"
+      />
+    </div>
   </div>
 </template>
 
@@ -22,5 +33,13 @@ export default class ItemDetails extends Vue {}
 <style>
 .ItemDetails {
   margin: 20px;
+}
+
+.ImageGrid {
+  display: flex;
+}
+
+.Image {
+  margin: 5px;
 }
 </style>
