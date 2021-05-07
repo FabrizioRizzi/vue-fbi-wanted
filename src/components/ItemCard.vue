@@ -46,7 +46,7 @@ export default class ItemCard extends Vue {
 
 .Reward {
   width: 170px;
-  background: aqua;
+  background: #f1cd1c9c;
   position: absolute;
   top: 30px;
   transform: rotate(45deg);
