@@ -4,6 +4,9 @@
       <router-link to="/">Home</router-link>
     </div>
     <h1>{{ item.title }}</h1>
+    <h2>Caution</h2>
+    <div v-html="item.caution"></div>
+    <h2>Details</h2>
     <div v-html="item.details"></div>
     <div class="ImageGrid">
       <img

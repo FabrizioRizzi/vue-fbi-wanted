@@ -1,8 +1,8 @@
 <template>
-  <div class="ItemCard">
-    <div v-if="item.reward_max" class="Reward">$ {{item.reward_max}}</div>
+  <div class="ItemCard" @click="goToItem">
+    <div v-if="item.reward_max" class="Reward">$ {{ item.reward_max }}</div>
     <img :src="item.images?.length && item.images[0].thumb" />
-    <h2 @click="goToItem" class="Name">{{ item.title }}</h2>
+    <h2 class="Name">{{ item.title }}</h2>
     <h3 :class="item.person_classification">
       Person Classification: {{ item.person_classification }}
     </h3>
@@ -42,6 +42,7 @@ export default class ItemCard extends Vue {
   box-shadow: 2px 2px 5px #00000020;
   background: #efefef85;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .Reward {
@@ -62,7 +63,6 @@ img {
 }
 
 .Name {
-  cursor: pointer;
   margin: 10px;
   text-align: center;
 }
