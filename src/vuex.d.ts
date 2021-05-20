@@ -5,7 +5,8 @@ declare module '@vue/runtime-core' {
   // declare your own store states
   export interface State {
     items: Item[],
-    item: Item
+    item: Item,
+    page: number
   }
 
   export interface Item {

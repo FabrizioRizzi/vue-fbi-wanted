@@ -1,11 +1,16 @@
 <template>
   <Header :title="'FBI Most Wanted'" />
+  <div class="Navigation">
+    <div>
+      <div v-if="page > 1" @click="goToPreviousPage" class="Pointer">
+        Previous Page
+      </div>
+    </div>
+    <div>{{ page }}</div>
+    <div @click="goToNextPage" class="Pointer">Next Page</div>
+  </div>
   <div class="ItemCardsContainer">
-    <ItemCard
-      v-for="item in items"
-      v-bind:key="item.uid"
-      :item="item"
-    />
+    <ItemCard v-for="item in items" v-bind:key="item.uid" :item="item" />
   </div>
 </template>
 
@@ -13,6 +18,7 @@
 import { Options, Vue } from "vue-class-component";
 import Header from "./Header.vue";
 import ItemCard from "./ItemCard.vue";
+import { mapGetters } from "vuex";
 
 @Options({
   name: "Home",
@@ -21,15 +27,25 @@ import ItemCard from "./ItemCard.vue";
     ItemCard,
   },
   computed: {
-    items() {
-      return this.$store.getters.getItems
-    }
+    ...mapGetters(["page", "items"]),
   },
   mounted() {
-    this.$store.dispatch('setItems');
-  }
+    this.$store.dispatch("setItems");
+  },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  page!: number;
+
+  goToNextPage() {
+    this.$store.commit("setPage", this.page + 1);
+    this.$store.dispatch("setItems", { page: this.page });
+  }
+
+  goToPreviousPage() {
+    this.$store.commit("setPage", this.page - 1);
+    this.$store.dispatch("setItems", { page: this.page });
+  }
+}
 </script>
 
 <style>
@@ -38,5 +54,14 @@ export default class Home extends Vue {}
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   grid-auto-rows: 1fr;
   align-items: stretch;
+}
+.Navigation {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-around;
+  text-align: center;
+}
+.Pointer {
+  cursor: pointer;
 }
 </style>

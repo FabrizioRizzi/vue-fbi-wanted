@@ -6,6 +6,9 @@ const mutations = {
   },
   setItem(state: State, payload: Item) {
     state.item = payload;
+  },
+  setPage(state: State, payload: number) {
+    state.page = payload;
   }
 };
 

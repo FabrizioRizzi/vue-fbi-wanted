@@ -7,7 +7,8 @@ import actions from './actions';
 export const store = createStore<State>({
   state: {
     items: [],
-    item: {}
+    item: {},
+    page: 1,
   },
   getters,
   mutations,

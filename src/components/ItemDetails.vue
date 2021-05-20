@@ -26,7 +26,7 @@ import { Options, Vue } from "vue-class-component";
   name: "ItemDetails",
   data() {
     return {
-      item: this.$store.getters.getItem,
+      item: this.$store.getters.item,
     };
   },
 })
