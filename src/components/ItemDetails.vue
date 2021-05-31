@@ -39,7 +39,8 @@ export default class ItemDetails extends Vue {}
 }
 
 .ImageGrid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 140px);
 }
 
 .Image {

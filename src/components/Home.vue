@@ -2,15 +2,20 @@
   <Header :title="'FBI Most Wanted'" />
   <div class="Navigation">
     <div>
-      <div v-if="page > 1" @click="goToPreviousPage" class="Pointer">
-        Previous Page
-      </div>
+      <div v-if="page > 1" @click="goToPreviousPage" class="Pointer">Previous</div>
     </div>
     <div>{{ page }}</div>
-    <div @click="goToNextPage" class="Pointer">Next Page</div>
+    <div @click="goToNextPage" class="Pointer">Next</div>
   </div>
   <div class="ItemCardsContainer">
     <ItemCard v-for="item in items" v-bind:key="item.uid" :item="item" />
+  </div>
+  <div class="Navigation">
+    <div>
+      <div v-if="page > 1" @click="goToPreviousPage" class="Pointer">Previous</div>
+    </div>
+    <div>{{ page }}</div>
+    <div @click="goToNextPage" class="Pointer">Next</div>
   </div>
 </template>
 
@@ -30,7 +35,7 @@ import { mapGetters } from "vuex";
     ...mapGetters(["page", "items"]),
   },
   mounted() {
-    this.$store.dispatch("setItems");
+    this.$store.dispatch("setItems", { page: this.page });
   },
 })
 export default class Home extends Vue {
@@ -51,13 +56,15 @@ export default class Home extends Vue {
 <style>
 .ItemCardsContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-auto-rows: 1fr;
   align-items: stretch;
 }
 .Navigation {
+  width: 300px;
+  margin: 10px auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   justify-content: space-around;
   text-align: center;
 }
