@@ -3,7 +3,7 @@ import { ActionContext } from "vuex";
 
 const actions = {
   setItems(context: ActionContext<State, State>, options: {[key: string]: string | number}) {
-    fetch("https://server-relay-blz4304resjj.runkit.sh", {
+    return fetch("https://server-relay-blz4304resjj.runkit.sh", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
