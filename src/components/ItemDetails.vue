@@ -14,7 +14,12 @@
         v-bind:key="image.caption"
         :src="image.thumb"
         class="Image"
+        @click="openImage(image.large)"
       />
+    </div>
+    <div class="LargeImage" v-if="showLargeImage">
+      <img :src="largeImage" />
+      <div @click="closeImage" class="CloseImage">Close</div>
     </div>
   </div>
 </template>
@@ -30,7 +35,20 @@ import { Options, Vue } from "vue-class-component";
     };
   },
 })
-export default class ItemDetails extends Vue {}
+export default class ItemDetails extends Vue {
+  largeImage: string = "";
+  showLargeImage: boolean = false;
+
+  openImage(image: string) {
+    this.largeImage = image;
+    this.showLargeImage = true;
+  }
+
+  closeImage() {
+    this.largeImage = "";
+    this.showLargeImage = false;
+  }
+}
 </script>
 
 <style>
@@ -45,5 +63,19 @@ export default class ItemDetails extends Vue {}
 
 .Image {
   margin: 5px;
+  cursor: pointer;
+}
+
+.LargeImage {
+  position: relative;
+  margin: 5px;
+}
+
+.CloseImage {
+  position: absolute;
+  background: #fff;
+  top: 0;
+  padding: 10px;
+  cursor: pointer;
 }
 </style>
